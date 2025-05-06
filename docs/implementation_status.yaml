@@ -1,0 +1,85 @@
+# Dharmagile AI - Implementation Status (as of 2025-05-06 JST)
+
+project:
+  name: Dharmagile AI
+  structure:
+    root:
+      - .gitignore
+      - package.json
+      - pnpm-workspace.yaml
+      - README.md
+      - biome.json
+      - lint-staged.config.js
+      - .husky/
+      - apps/
+      - packages/
+      - infra/
+      - docs/
+      - supabase/
+    apps:
+      - web/      # Next.js frontend (scaffolded)
+      - api/      # FastAPI backend (scaffolded)
+    packages:
+      - ui/       # shadcn/ui component library (stub)
+      - config/   # shared config (eslint, tsconfig, tailwind)
+    infra:        # IaC scripts (Terraform, etc.)
+    docs:         # Architecture, INSIGHT templates, status docs
+    supabase:
+      - README.md
+      - schema.sql
+
+setup:
+  monorepo: pnpm
+  workspace: true
+  node: lts/iron (via Volta, per proposal)
+  python: 3.12.x (FastAPI, virtualenv expected)
+  frontend: Next.js 14, TailwindCSS, shadcn/ui (per spec)
+  backend: FastAPI (Python), Supabase integration in progress
+  ci: Husky, Biome, Lint-Staged (setup in progress)
+  auth: Supabase (initial setup in progress)
+  payments: Stripe Checkout (planned)
+  db: Supabase PostgreSQL (schema.sql drafted)
+  deployment: Vercel (FE), AWS/Cloud Run (BE) planned
+
+milestones:
+  phase_0_preparation:
+    status: completed
+    details:
+      - Monorepo initialized (pnpm)
+      - apps/web and apps/api directories scaffolded
+      - packages/ui and packages/config directories scaffolded
+      - infra/ directory present
+      - README.md, .gitignore, pnpm-workspace.yaml present
+      - Initial docs and roadmap/spec/proposal files present
+      - supabase/ directory created with README.md and schema.sql
+  phase_1_mvp_core:
+    status: in_progress
+    details:
+      - Biome, Husky, Lint-Staged config files present; CI tooling setup ongoing
+      - Supabase schema.sql drafted; DB model design in progress
+      - Auth (Supabase) initial setup started
+      - No business logic or UI components implemented yet; only scaffolding and environment setup completed
+      - Next steps: implement Auth, Chat UI, and API endpoints as per roadmap
+  phase_2_billing:
+    status: pending
+    details:
+      - Stripe Checkout integration not started
+  phase_3_dashboard:
+    status: pending
+    details:
+      - Dashboard and visualization features not started
+  phase_4_deploy:
+    status: pending
+    details:
+      - Deployment pipeline and staging environment not started
+
+references:
+  - .clinerules/Dharmagile Development Road.md
+  - .clinerules/Dharmagile Functional Spec.md
+  - .clinerules/Dharmagile Project Proposal.md
+
+notes:
+  - All setup and structure follow the 6-week MVP plan and monorepo blueprint.
+  - Directory structure and initial configs are in place; Supabase schema design and CI tooling setup are ongoing.
+  - No business logic or UI components implemented yet.
+  - Next steps: complete CI setup, implement Auth, Chat UI, and API endpoints as per roadmap.

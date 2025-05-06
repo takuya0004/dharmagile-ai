@@ -1,0 +1,29 @@
+# Node
+node_modules/
+.npm/
+.pnpm-debug.log
+.next/
+dist/
+.env
+.env.*
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# VSCode
+.vscode/
+.history/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Misc
+coverage/
+.idea/
+*.swp
