@@ -1,0 +1,9 @@
+# Error Reflection Entries
+# This file is intended to be appended with entries of errors and their resolutions
+# following the structure defined in global_error_reflection.yaml
+
+# Example entry:
+# - error_detail: "Example error message or description"
+#   identified_cause: "Cause of the example error"
+#   resolution_description: "How the error was resolved"
+#   future_steps_and_policy: "Steps to avoid repeating this error"

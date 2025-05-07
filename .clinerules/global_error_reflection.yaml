@@ -1,0 +1,13 @@
+# Global Error Reflection Rule for Clinerules
+# This YAML file defines the structure for saving and managing reflections on errors and their resolutions
+# to prevent repeating the same mistakes.
+
+error_reflection_rule:
+  description: >
+    Rule to save and manage reflections on errors once they are resolved,
+    to avoid repeating the same mistakes.
+  structure:
+    - error_detail: "Detailed description of the error encountered."
+    - identified_cause: "Root cause identified for the error."
+    - resolution_description: "Description of how the cause was resolved and the error fixed."
+    - future_steps_and_policy: "Guidelines and steps to follow to prevent recurrence."

@@ -1,4 +1,4 @@
-# Dharmagile AI - Implementation Status (as of 2025-05-06 JST)
+# Dharmagile AI - Implementation Status (as of 2025-05-07 JST)
 
 project:
   name: Dharmagile AI
@@ -34,11 +34,17 @@ setup:
   node: lts/iron (via Volta, per proposal)
   python: 3.12.x (FastAPI, virtualenv expected)
   frontend: Next.js 14, TailwindCSS, shadcn/ui (per spec)
+  typescript: # Added section for TypeScript specific setup
+    status: completed
+    details:
+      - apps/web/tsconfig.json created with path aliases.
+      - apps/web/next-env.d.ts created.
+      - TypeScript error resolution for Supabase client utilities and login page attempted.
   backend: FastAPI (Python), Supabase integration in progress
-  ci: Husky, Biome, Lint-Staged (setup in progress)
-  auth: Supabase (initial setup in progress)
+  ci: Husky, Biome, Lint-Staged (setup completed for pre-commit checks)
+  auth: Supabase (initial setup in progress, client utilities and login page created)
   payments: Stripe Checkout (planned)
-  db: Supabase PostgreSQL (schema.sql drafted)
+  db: Supabase PostgreSQL (schema.sql updated for MVP core tables)
   deployment: Vercel (FE), AWS/Cloud Run (BE) planned
 
 milestones:
@@ -51,15 +57,32 @@ milestones:
       - infra/ directory present
       - README.md, .gitignore, pnpm-workspace.yaml present
       - Initial docs and roadmap/spec/proposal files present
-      - supabase/ directory created with README.md and schema.sql
+      - supabase/ directory created with README.md and schema.sql (initial stub)
   phase_1_mvp_core:
     status: in_progress
     details:
-      - Biome, Husky, Lint-Staged config files present; CI tooling setup ongoing
-      - Supabase schema.sql drafted; DB model design in progress
-      - Auth (Supabase) initial setup started
-      - No business logic or UI components implemented yet; only scaffolding and environment setup completed
-      - Next steps: implement Auth, Chat UI, and API endpoints as per roadmap
+      - **DB Schema**:
+        - `supabase/schema.sql` updated with `users`, `sessions`, `chat_messages`, `insight_records` tables and indexes.
+      - **CI Tooling (Pre-commit)**:
+        - Biome, Husky, Lint-Staged configuration verified for pre-commit checks.
+      - **Next.js TypeScript Environment**:
+        - `apps/web/tsconfig.json` created and configured.
+        - `apps/web/next-env.d.ts` created.
+      - **Authentication (Supabase)**:
+        - Supabase client utilities (`client.ts`, `server.ts`) created in `apps/web/lib/supabase/`. (Completed)
+        - Login Page (`apps/web/app/login/page.tsx`) with email/password and GitHub OAuth. (Completed)
+        - SignUp Page (`apps/web/app/signup/page.tsx`) with email/password. (Completed)
+        - Auth Callback Route (`apps/web/app/auth/callback/route.ts`) for session exchange. (Completed)
+        - Auth Error Page (`apps/web/app/auth/auth-code-error/page.tsx`). (Completed)
+        - Placeholder Dashboard Page (`apps/web/app/dashboard/page.tsx`) with logout functionality. (Completed)
+        - Middleware (`apps/web/middleware.ts`) for route protection and session refresh. (Completed)
+        - TypeScript error resolution for auth files completed. (User to verify with `pnpm typecheck` if any new issues arose)
+        - (User task: Configure Supabase project settings and .env.local variables)
+      - **Chat UI**: Not started.
+      - **API Endpoints (FastAPI)**: Not started.
+      - **OpenAI Integration**: Not started.
+      - **Unit/E2E Tests**: Not started.
+      - Next steps: Complete Auth UI (Signup, callback, logout, middleware), then Chat UI and API endpoints.
   phase_2_billing:
     status: pending
     details:
@@ -80,6 +103,6 @@ references:
 
 notes:
   - All setup and structure follow the 6-week MVP plan and monorepo blueprint.
-  - Directory structure and initial configs are in place; Supabase schema design and CI tooling setup are ongoing.
-  - No business logic or UI components implemented yet.
-  - Next steps: complete CI setup, implement Auth, Chat UI, and API endpoints as per roadmap.
+  - Core Auth functionality scaffolding in Next.js frontend is complete.
+  - User needs to configure Supabase project settings, .env.local, and test the auth flow.
+  - Next development step: Chat UI implementation.
